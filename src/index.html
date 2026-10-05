@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ClearCalc · Scientific Calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="config.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header><a class="brand" href="./">ClearCalc<span>CALCULATOR</span></a><button id="theme" class="quiet" type="button">Toggle theme</button></header>
+  <main>
+    <div class="intro"><p class="eyebrow">Complex made simple.</p><h1>Every step adds up.</h1><p>Enter an expression. Your results and history are saved automatically.</p></div>
+    <div class="workspace">
+      <section class="calculator" aria-label="Calculator">
+        <div class="card-title"><span>Calculator</span><span class="badge" id="connection">Connecting...</span></div>
+        <form id="calculate-form">
+          <label for="expression">Expression</label>
+          <input id="expression" name="expression" placeholder="e.g. (1 + 2) × 3" maxlength="500" autocomplete="off" spellcheck="false">
+          <div class="science-toolbar"><label for="angle-mode">Angle mode</label><select id="angle-mode"><option value="DEG">DEG (degrees)</option><option value="RAD">RAD (radians)</option></select></div>
+          <div class="science-keys input-keys">
+            <button type="button" data-value="^">xʸ</button><button type="button" data-value="sqrt(">√</button><button type="button" data-value="!">n!</button><button type="button" data-value="abs(">abs</button>
+            <button type="button" data-value="sin(">sin</button><button type="button" data-value="cos(">cos</button><button type="button" data-value="tan(">tan</button><button type="button" data-value="pi">π</button>
+            <button type="button" data-value="ln(">ln</button><button type="button" data-value="log(">log₁₀</button><button type="button" data-value="e">e</button><button type="button" data-value="mem">mem</button>
+          </div>
+          <div class="result-line"><span>Result</span><output id="result" aria-live="polite">—</output></div>
+          <p id="message" class="message" role="status">Supports parentheses, decimals, and signed numbers</p>
+          <div class="keys input-keys" id="keys">
+            <button type="button" data-action="clear" class="utility">AC</button><button type="button" data-value="(" class="utility">(</button><button type="button" data-value=")" class="utility">)</button><button type="button" data-action="backspace" class="utility" aria-label="Delete the previous character">⌫</button>
+            <button type="button" data-value="7">7</button><button type="button" data-value="8">8</button><button type="button" data-value="9">9</button><button type="button" data-value="÷" class="operator">÷</button>
+            <button type="button" data-value="4">4</button><button type="button" data-value="5">5</button><button type="button" data-value="6">6</button><button type="button" data-value="×" class="operator">×</button>
+            <button type="button" data-value="1">1</button><button type="button" data-value="2">2</button><button type="button" data-value="3">3</button><button type="button" data-value="−" class="operator">−</button>
+            <button type="button" data-value="0">0</button><button type="button" data-value=".">.</button><button type="button" data-value="+" class="operator">+</button><button type="submit" id="equals" class="equals">=</button>
+          </div>
+        </form>
+        <div class="memory-bar" aria-label="Memory controls"><span id="memory-value">M = —</span><div><button type="button" data-memory="store" title="Store the latest successful result">MS</button><button type="button" id="memory-recall" title="Insert the memory variable into the expression">MR</button><button type="button" data-memory="add" title="Add the latest successful result to memory">M+</button><button type="button" data-memory="subtract" title="Subtract the latest successful result from memory">M−</button><button type="button" data-memory="clear" title="Clear memory">MC</button></div></div>
+        <p id="memory-message" class="message" role="status"></p>
+        <details class="usage"><summary>Scientific calculation help</summary><p>Examples: 2^10, sqrt(16), 5!, sin(30), ln(e), log(100). Close each function with a right parenthesis. Powers take precedence over unary minus: -2^2 = -4. Powers associate to the right: 2^3^2 = 512. Use mem for the stored memory value. MS/M+/M− use your latest successful result.</p></details>
+        <p class="hint">Enter to calculate · Esc to clear · Click a history expression to edit</p>
+      </section>
+      <section class="history" aria-label="History">
+        <div class="card-title"><span>History <small id="count">0 records</small></span><div><button type="button" id="export" class="quiet">Export CSV</button> <button type="button" id="refresh" class="quiet">Refresh</button></div></div>
+        <form id="search-form" class="search"><input id="search" aria-label="Search history expressions" placeholder="Search expressions..." maxlength="500"><button type="submit" class="quiet">Search</button></form>
+        <p id="history-message" class="message" role="status"></p>
+        <div id="history-list" class="history-list"></div>
+        <nav class="pagination" aria-label="History pages"><button id="previous" type="button" class="quiet">Previous</button><span id="page-label">Page 1</span><button id="next" type="button" class="quiet">Next</button></nav>
+      </section>
+    </div>
+    <footer>ClearCalc / Arithmetic · Expressions · History</footer>
+  </main>
+</body>
+</html>
