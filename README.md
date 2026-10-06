@@ -25,3 +25,8 @@ Enter calculates; Esc clears. Click a history expression to edit it and restore 
 The Dockerfile and nginx.conf work with the combined project's compose.yaml. Nginx expects the backend hostname `backend`. The frontend and backend can be submitted as separate GitHub repositories; keep README.md and codestyle.md in each.
 
 For scientific functions, memory controls, upgrades, and CSV export instructions, see `docs/enhanced-user-guide.md` in the combined project.
+## Live Demo
+
+https://jssun.pythonanywhere.com
+
+The frontend and backend API are served from the same domain.
